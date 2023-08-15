@@ -1,0 +1,183 @@
+* {
+  /* é um seletor universal. Tudo na página vai seguir essas regras*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* serve pra colocar as margens de acordo com as bordas da caixa*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-desktop-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+  /* 
+  como fazer 2 coisas diferentes ? isso se chama shorthand (atalho)
+  */
+  /*backgroud: color image repeat position/size*/
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter Tight", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/*profile*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  /*display: block;*/
+  width: 112px;
+  /*margin: auto;*/
+  /* a margin só pode acontecer porque eu coloquei o display: block la em cima... 
+  imagem é um tipo de tag inline*/
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+/*switch*/
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*links*/
+
+ul {
+  list-style: none;
+  display: flex;
+  /* torna os itens da lista flexiveis*/
+  flex-direction: column;
+  /*flexibiliza os itens da lista em colunas*/
+  gap: 32px;
+  /* coloca espaços entre os itens da lista*/
+  padding: 24px 0;
+}
+ul li a {
+  display: flex;
+  align-items: center;
+  /*centralizar na horizontal*/
+  justify-content: center;
+  /*cetralizar na vertical*/
+
+  padding: 16px 24px;
+  background: var(--surface-color);
+  /*cor da caixa de cada item*/
+  border: 1px solid var(--stroke-color);
+  /* cor da borda de cada item da lista*/
+  border-radius: 8px;
+  /* deixa a borda arredondada*/
+
+  backdrop-filter: blur(4px);
+  /*deixa levemente embaçado as letras de cada item*/
+  -webkit-backdrop-filter: blur(4px);
+  /*alguma coisa relacionada ao navegador que nao faço ideia*/
+  text-decoration: none;
+  /*retira a linha de baixo de cada item, era sublinhado o link de cada um*/
+  font-weight: 500;
+  transition: background 0.3s;
+  /*faz a transição quando eu passo o mouse em cima do botão para deixar mais suave*/
+}
+
+/*pseudo-selector: muda quando passa o mouse em cima*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links abaixo*/
+#social-links {
+  display: flex;
+  justify-content: center; /*pra deixar os icones centralizados*/
+  gap: 24px;
+
+  padding: 24px;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%; /*para aparecer uma bolinha quando passar o mouse*/
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
